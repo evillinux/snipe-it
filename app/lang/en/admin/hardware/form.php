@@ -35,5 +35,6 @@ return array(
     'update'			=> 'Asset Update',
     'warranty'			=> 'Warranty',
     'years'				=> 'years',
+	'ipaddr'			=> 'IP Address',
 )
 ;

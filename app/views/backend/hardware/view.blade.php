@@ -82,6 +82,12 @@
             </a>
              / {{{ $asset->model->modelno }}}</div>
         @endif
+		
+		@if ($asset->ipaddr)
+            <div class="col-md-12" style="padding-bottom: 5px;"><strong>@lang('admin/hardware/form.ipaddr'): </strong>
+            <em>{{{ $asset->ipaddr }}}</em></div>
+
+        @endif
 
         @if ($asset->purchase_date)
             <div class="col-md-12" style="padding-bottom: 5px;"><strong>@lang('admin/hardware/form.date'): </strong>

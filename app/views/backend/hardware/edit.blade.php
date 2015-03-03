@@ -162,6 +162,15 @@
                     </div>
             </div>
 
+			<!-- IP Address -->
+            <div class="form-group {{ $errors->has('ipaddr') ? ' has-error' : '' }}">
+                <label for="ipaddr" class="col-md-2 control-label">@lang('admin/hardware/form.ipaddr')</label>
+                    <div class="col-md-7">
+                        <input class="form-control" type="text" name="ipaddr" id="ipaddr" value="{{{ Input::old('ippadr', $asset->ipaddr) }}}" />
+                        {{ $errors->first('ipaddr', '<br><span class="alert-msg"><i class="fa fa-times"></i> :message</span>') }}
+                    </div>
+            </div>
+			
             <!-- Notes -->
             <div class="form-group {{ $errors->has('notes') ? ' has-error' : '' }}">
                 <label for="notes" class="col-md-2 control-label">@lang('admin/hardware/form.notes')</label>

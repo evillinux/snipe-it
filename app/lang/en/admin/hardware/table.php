@@ -19,4 +19,5 @@ return array(
     'status'   		=> 'Status',
     'title'      	=> 'Asset ',
 	'notes'			=> 'Notes',
+	'ipaddr'		=> 'IP Address'
 );
