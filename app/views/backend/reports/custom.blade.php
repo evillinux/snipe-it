@@ -79,6 +79,12 @@
                         @lang('general.location')
                         </label>
                     </div>
+					<div class="checkbox col-md-12">
+                    	<label>
+                    	{{ Form::checkbox('notes', '1') }}
+                        @lang('general.notes')
+						</label>
+                    </div>
                     <div class="checkbox col-md-12">
                     	<label>
                         {{ Form::checkbox('assigned_to', '1') }}
