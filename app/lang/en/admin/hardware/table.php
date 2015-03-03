@@ -18,5 +18,5 @@ return array(
     'serial'   		=> 'Serial',
     'status'   		=> 'Status',
     'title'      	=> 'Asset ',
-
+	'notes'			=> 'Notes',
 );
