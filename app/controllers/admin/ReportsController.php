@@ -49,6 +49,7 @@ class ReportsController extends AdminController
             Lang::get('admin/hardware/table.purchase_cost'),
             Lang::get('admin/hardware/form.order'),
             Lang::get('admin/hardware/form.supplier'),
+			Lang::get('admin/hardware/table.notes'),
             Lang::get('admin/hardware/table.checkoutto'),
             Lang::get('admin/hardware/table.location'),
             Lang::get('general.status')
@@ -81,7 +82,8 @@ class ReportsController extends AdminController
             } else {
                 $row[] = '';
             }
-
+			
+			$row[] = '"'.$asset->notes.'"';
             if ($asset->assigned_to > 0) {
                 $user = User::find($asset->assigned_to);
                 $row[] = $user->fullName();
@@ -324,6 +326,10 @@ class ReportsController extends AdminController
         {
             $header[] = 'Location';
         }
+		if (e(Input::get('notes')) == '1')
+        {
+            $header[] = 'Notes';
+        }
         if (e(Input::get('assigned_to')) == '1')
         {
             $header[] = 'Assigned To';
@@ -407,7 +413,10 @@ class ReportsController extends AdminController
                 } else {
                     $row[] = '';  // Empty string if location is not set
                 }
-            }
+            }			
+			if (e(Input::get('notes')) == '1') {
+                $row[] = $asset->notes;
+            }			
             if (e(Input::get('assigned_to')) == '1') {
                 if ($asset->assigned_to > 0) {
                     $user = User::find($asset->assigned_to);
