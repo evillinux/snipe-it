@@ -39,7 +39,6 @@
             <th class="col-sm-1">@lang('admin/hardware/table.purchase_cost')</th>
             <th class="col-sm-1">@lang('admin/hardware/form.order')</th>
             <th class="col-sm-1">@lang('admin/hardware/form.supplier')</th>
-			<th class="col-sm-1">@lang('admin/hardware/table.notes')</th>
             <th class="col-sm-1">@lang('admin/hardware/table.checkoutto')</th>
             <th class="col-sm-1">@lang('admin/hardware/table.location')</th>
             <th class="col-sm-1">@lang('general.status')</th>
@@ -85,7 +84,6 @@
                     </a>
                 @endif
             </td>
-			<td>{{ $asset->notes }}</td>
             <td>
              @if ($asset->assigneduser)
             	 @if ($asset->assigneduser->deleted_at!='')
