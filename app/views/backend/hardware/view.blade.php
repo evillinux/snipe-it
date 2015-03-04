@@ -61,7 +61,7 @@
 
         @if ($asset->serial)
             <div class="col-md-12" style="padding-bottom: 5px;"><strong>@lang('admin/hardware/form.serial'): </strong>
-            <em>{{{ $asset->serial }}}</em></div>
+            <em><a href="http://www.dell.com/support/home/us/en/19/product-support/servicetag/{{{ $asset->serial }}}/" target="_blank">{{{ $asset->serial }}}</a></em></div>
 
         @endif
 
@@ -86,6 +86,18 @@
 		@if ($asset->ipaddr)
             <div class="col-md-12" style="padding-bottom: 5px;"><strong>@lang('admin/hardware/form.ipaddr'): </strong>
             <em>{{{ $asset->ipaddr }}}</em></div>
+
+        @endif
+		
+		@if ($asset->loc_rack)
+            <div class="col-md-12" style="padding-bottom: 5px;"><strong>@lang('admin/hardware/form.loc_rack'): </strong>
+            <em>{{{ $asset->loc_rack }}}</em></div>
+
+        @endif
+		
+		@if ($asset->bcrank)
+            <div class="col-md-12" style="padding-bottom: 5px;"><strong>@lang('admin/hardware/form.bcrank'): </strong>
+            <em>{{{ $asset->bcrank }}}</em></div>
 
         @endif
 
@@ -404,6 +416,9 @@
                  @endif
             @endif
 
+			
+			
+			
         </div>
     </div>
 </div>

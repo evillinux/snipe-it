@@ -171,6 +171,24 @@
                     </div>
             </div>
 			
+			<!-- Location Rack -->
+            <div class="form-group {{ $errors->has('loc_rack') ? ' has-error' : '' }}">
+                <label for="loc_rack" class="col-md-2 control-label">@lang('admin/hardware/form.loc_rack')</label>
+                    <div class="col-md-7">
+                        <input class="form-control" type="text" name="loc_rack" id="loc_rack" value="{{{ Input::old('loc_rack', $asset->loc_rack) }}}" />
+                        {{ $errors->first('loc_rack', '<br><span class="alert-msg"><i class="fa fa-times"></i> :message</span>') }}
+                    </div>
+            </div>
+			
+			<!-- BC Ranking -->
+            <div class="form-group {{ $errors->has('bcrank') ? ' has-error' : '' }}">
+                <label for="ipaddr" class="col-md-2 control-label">@lang('admin/hardware/form.bcrank')</label>
+                    <div class="col-md-7">
+                        <input class="form-control" type="text" name="bcrank" id="bcrank" value="{{{ Input::old('bcrank', $asset->bcrank) }}}" />
+                        {{ $errors->first('bcrank', '<br><span class="alert-msg"><i class="fa fa-times"></i> :message</span>') }}
+                    </div>
+            </div>
+			
             <!-- Notes -->
             <div class="form-group {{ $errors->has('notes') ? ' has-error' : '' }}">
                 <label for="notes" class="col-md-2 control-label">@lang('admin/hardware/form.notes')</label>

@@ -19,5 +19,7 @@ return array(
     'status'   		=> 'Status',
     'title'      	=> 'Asset ',
 	'notes'			=> 'Notes',
-	'ipaddr'		=> 'IP Address'
+	'ipaddr'		=> 'IP Address',
+	'bcrank'		=> 'BC Ranking',
+	'loc_rack'		=> 'Rack Location',
 );

@@ -36,5 +36,7 @@ return array(
     'warranty'			=> 'Warranty',
     'years'				=> 'years',
 	'ipaddr'			=> 'IP Address',
+	'bcrank'			=> 'BC Ranking',
+	'loc_rack'			=> 'Rack Location',
 )
 ;
