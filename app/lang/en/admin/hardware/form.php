@@ -38,5 +38,8 @@ return array(
 	'ipaddr'			=> 'IP Address',
 	'bcrank'			=> 'BC Ranking',
 	'loc_rack'			=> 'Rack Location',
+	'kvm'				=> 'KVM',
+	'backup_solution'	=> 'Backup System',
+	'storage_solution'	=> 'Storage System',
 )
 ;

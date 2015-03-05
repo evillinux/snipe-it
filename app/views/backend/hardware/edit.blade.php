@@ -180,6 +180,34 @@
                     </div>
             </div>
 			
+			<!-- KVM -->
+            <div class="form-group {{ $errors->has('kvm') ? ' has-error' : '' }}">
+                <label for="kvm" class="col-md-2 control-label">@lang('admin/hardware/form.kvm')</label>
+                    <div class="col-md-7">
+                        <input class="form-control" type="text" name="kvm" id="kvm" value="{{{ Input::old('kvm', $asset->kvm) }}}" />
+                        {{ $errors->first('kvm', '<br><span class="alert-msg"><i class="fa fa-times"></i> :message</span>') }}
+                    </div>
+            </div>
+			
+			<!-- Backup System -->
+            <div class="form-group {{ $errors->has('kvm') ? ' has-error' : '' }}">
+                <label for="backup_solution" class="col-md-2 control-label">@lang('admin/hardware/form.backup_solution')</label>
+                    <div class="col-md-7">
+                        <input class="form-control" type="text" name="backup_solution" id="backup_solution" value="{{{ Input::old('backup_solution', $asset->backup_solution) }}}" />
+                        {{ $errors->first('backup_solution', '<br><span class="alert-msg"><i class="fa fa-times"></i> :message</span>') }}
+                    </div>
+            </div>
+			
+			<!-- Storage Solution -->
+			
+			<div class="form-group {{ $errors->has('storage_solution') ? ' has-error' : '' }}">
+                <label for="storage_solution" class="col-md-2 control-label">@lang('admin/hardware/form.storage_solution')</label>
+                    <div class="col-md-7">
+                        <input class="form-control" type="text" name="storage_solution" id="storage_solution" value="{{{ Input::old('storage_solution', $asset->backup_solution) }}}" />
+                        {{ $errors->first('storage_solution', '<br><span class="alert-msg"><i class="fa fa-times"></i> :message</span>') }}
+                    </div>
+            </div>
+			
 			<!-- BC Ranking -->
             <div class="form-group {{ $errors->has('bcrank') ? ' has-error' : '' }}">
                 <label for="ipaddr" class="col-md-2 control-label">@lang('admin/hardware/form.bcrank')</label>

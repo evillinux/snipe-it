@@ -85,19 +85,37 @@
 		
 		@if ($asset->ipaddr)
             <div class="col-md-12" style="padding-bottom: 5px;"><strong>@lang('admin/hardware/form.ipaddr'): </strong>
-            <em>{{{ $asset->ipaddr }}}</em></div>
+            {{{ $asset->ipaddr }}}</div>
 
         @endif
 		
 		@if ($asset->loc_rack)
             <div class="col-md-12" style="padding-bottom: 5px;"><strong>@lang('admin/hardware/form.loc_rack'): </strong>
-            <em>{{{ $asset->loc_rack }}}</em></div>
+            {{{ $asset->loc_rack }}}</div>
+
+        @endif
+		
+		@if ($asset->kvm)
+            <div class="col-md-12" style="padding-bottom: 5px;"><strong>@lang('admin/hardware/form.kvm'): </strong>
+            {{{ $asset->kvm }}}</div>
+
+        @endif
+		
+		@if ($asset->backup_solution)
+            <div class="col-md-12" style="padding-bottom: 5px;"><strong>@lang('admin/hardware/form.backup_solution'): </strong>
+            {{{ $asset->backup_solution }}}</div>
+
+        @endif		
+		
+		@if ($asset->storage_solution)
+            <div class="col-md-12" style="padding-bottom: 5px;"><strong>@lang('admin/hardware/form.storage_solution'): </strong>
+            {{{ $asset->storage_solution }}}</div>
 
         @endif
 		
 		@if ($asset->bcrank)
             <div class="col-md-12" style="padding-bottom: 5px;"><strong>@lang('admin/hardware/form.bcrank'): </strong>
-            <em>{{{ $asset->bcrank }}}</em></div>
+            {{{ $asset->bcrank }}}</div>
 
         @endif
 

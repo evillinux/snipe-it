@@ -91,7 +91,14 @@ class AssetsController extends AdminController
         ->select(DB::raw('concat(name," / ",modelno) as name, id'))->orderBy('name', 'asc')
         ->orderBy('modelno', 'asc')
         ->lists('name', 'id');
-
+		
+		/* Add Function later, requires adding route => Copy Manufacturers file...
+		// Grab the dropdown list of storage_solution
+		$storage_solution_list = array('' => 'Select a Storage Solution') + DB::table('storage_solution')
+		->select(DB::raw('concat(name," / ",model_name) as name, id'))->orderBy('name', 'asc')
+		->orderBy('model_name', 'asc')
+		->lists('name', 'id');
+		*/
 
         $supplier_list = array('' => '') + Supplier::orderBy('name', 'asc')->lists('name', 'id');
         $assigned_to = array('' => 'Select a User') + DB::table('users')->select(DB::raw('concat (first_name," ",last_name) as full_name, id'))->whereNull('deleted_at')->lists('full_name', 'id');
@@ -104,6 +111,7 @@ class AssetsController extends AdminController
         $view = View::make('backend/hardware/edit');
         $view->with('supplier_list',$supplier_list);
         $view->with('model_list',$model_list);
+		//$view->with('storage_solution_list',$storage_solution_list);
         $view->with('statuslabel_list',$statuslabel_list);
         $view->with('assigned_to',$assigned_to);
         $view->with('location_list',$location_list);
@@ -194,8 +202,11 @@ class AssetsController extends AdminController
             $asset->order_number            = e(Input::get('order_number'));
             $asset->notes            		= e(Input::get('notes'));
 			$asset->ipaddr					= e(Input::get('ipaddr'));
-			$asset->loc_rack					= e(Input::get('loc_rack'));
+			$asset->loc_rack				= e(Input::get('loc_rack'));
 			$asset->bcrank					= e(Input::get('bcrank'));
+			$asset->kvm						= e(Input::get('kvm'));
+			$asset->backup_solution			= e(Input::get('backup_solution'));
+			$asset->storage_solution		= e(Input::get('storage_solution'));
             $asset->asset_tag            	= e(Input::get('asset_tag'));
             $asset->mac_address 			= e(Input::get('mac_address'));
             $asset->user_id          		= Sentry::getId();
@@ -216,6 +227,9 @@ class AssetsController extends AdminController
 					$logaction->ipaddr = e(Input::get('ipaddr'));
 					$logaction->loc_rack = e(Input::get('loc_rack'));
 					$logaction->bcrank = e(Input::get('bcrank'));
+					$logaction->kvm = e(Input::get('kvm'));
+					$logaction->backup_solution = e(Input::get('backup_solution'));
+					$logaction->storage_solution = e(Input::get('storage_solution'));
 					$log = $logaction->logaction('checkout');
 				}
 
@@ -253,10 +267,18 @@ class AssetsController extends AdminController
         $supplier_list = array('' => '') + Supplier::orderBy('name', 'asc')->lists('name', 'id');
         $location_list = array('' => '') + Location::orderBy('name', 'asc')->lists('name', 'id');
 
+		/* Add Function later, requires adding route => Copy Manufacturers file...
+		// Grab the dropdown list of storage_solution
+		$storage_solution_list = array('' => '') + DB::table('storage_solution')
+		->select(DB::raw('concat(name," / ",model_name) as name, id'))->orderBy('name', 'asc')
+		->orderBy('model_name', 'asc')
+		->lists('name', 'id');
+		*/
+		
         // Grab the dropdown list of status
         $statuslabel_list = Statuslabel::orderBy('name', 'asc')->lists('name', 'id');
 
-        return View::make('backend/hardware/edit', compact('asset'))->with('model_list',$model_list)->with('supplier_list',$supplier_list)->with('location_list',$location_list)->with('statuslabel_list',$statuslabel_list);
+        return View::make('backend/hardware/edit', compact('asset'))->with('model_list',$model_list)->/*with('storage_solution_list',$storage_solution_list)*/with('supplier_list',$supplier_list)->with('location_list',$location_list)->with('statuslabel_list',$statuslabel_list);
     }
 
 
@@ -336,8 +358,11 @@ class AssetsController extends AdminController
             $asset->asset_tag           	= e(Input::get('asset_tag'));
             $asset->notes            		= e(Input::get('notes'));
 			$asset->ipaddr					= e(Input::get('ipaddr'));
-			$asset->loc_rack					= e(Input::get('loc_rack'));
+			$asset->loc_rack				= e(Input::get('loc_rack'));
 			$asset->bcrank					= e(Input::get('bcrank'));
+			$asset->kvm						= e(Input::get('kvm'));
+			$asset->backup_solution			= e(Input::get('backup_solution'));
+			$asset->storage_solution		= e(Input::get('storage_solution'));
             $asset->physical            	= '1';
             $asset->mac_address 			= e(Input::get('mac_address'));
 
