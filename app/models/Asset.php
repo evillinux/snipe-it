@@ -18,7 +18,7 @@ class Asset extends Depreciable
         'asset_tag'   => 'required|alpha_space|min:3|max:255|unique:assets,asset_tag,{id}',
         //'serial'   			=> 'required|alpha_dash|min:3|max:255|unique:assets,serial,{id}',
         'status' 			=> 'integer'
-		'ipaddr'			=> 'ipaddr'
+		//'ipaddr'			=> 'ipaddr'
         );
 
     public function depreciation()
