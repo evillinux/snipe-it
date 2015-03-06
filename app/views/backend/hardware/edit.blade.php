@@ -111,6 +111,16 @@
                 {{ $errors->first('purchase_date', '<br><span class="alert-msg"><i class="fa fa-times"></i> :message</span>') }}
                 </div>
             </div>
+			
+			<!-- Ship Date -->
+            <div class="form-group {{ $errors->has('ship_date') ? ' has-error' : '' }}">
+                <label for="ship_date" class="col-md-2 control-label">@lang('admin/hardware/form.ship_date')</label>
+                <div class="input-group col-md-3">
+                    <input type="date" class="datepicker form-control" data-date-format="yyyy-mm-dd" placeholder="Select Date" name="ship_date" id="ship_date" value="{{{ Input::old('ship_date', $asset->ship_date) }}}">
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                {{ $errors->first('ship_date', '<br><span class="alert-msg"><i class="fa fa-times"></i> :message</span>') }}
+                </div>
+            </div>
 
             <!-- Supplier -->
             <div class="form-group {{ $errors->has('supplier_id') ? ' has-error' : '' }}">

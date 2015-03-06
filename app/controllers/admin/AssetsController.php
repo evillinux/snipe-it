@@ -169,6 +169,12 @@ class AssetsController extends AdminController
             } else {
                 $asset->purchase_date        = e(Input::get('purchase_date'));
             }
+			
+			if (e(Input::get('ship_date')) == '') {
+                $asset->ship_date =  NULL;
+            } else {
+                $asset->ship_date        = e(Input::get('ship_date'));
+            }
 
             if (e(Input::get('assigned_to')) == '') {
                 $asset->assigned_to =  NULL;
@@ -194,7 +200,7 @@ class AssetsController extends AdminController
                 $asset->rtd_location_id     = e(Input::get('rtd_location_id'));
             }
 
-            // Save the asset data
+            
             // Save the asset data
             $asset->name            		= e(Input::get('name'));
             $asset->serial            		= e(Input::get('serial'));
@@ -213,6 +219,7 @@ class AssetsController extends AdminController
             $asset->archived          			= '0';
             $asset->physical            		= '1';
             $asset->depreciate          		= '0';
+			
 
             // Was the asset created?
             if($asset->save()) {
@@ -333,6 +340,12 @@ class AssetsController extends AdminController
                 $asset->purchase_date =  NULL;
             } else {
                 $asset->purchase_date        = e(Input::get('purchase_date'));
+            }
+			
+			if (e(Input::get('ship_date')) == '') {
+                $asset->ship_date =  NULL;
+            } else {
+                $asset->ship_date        = e(Input::get('ship_date'));
             }
 
             if (e(Input::get('supplier_id')) == '') {

@@ -25,4 +25,5 @@ return array(
 	'kvm'			=> 'KVM',
 	'backup_solution'	=> 'Backup System',
 	'storage_solution'	=> 'Storage System',
+	'ship_date'			=> 'Ship Date',
 );

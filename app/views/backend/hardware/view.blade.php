@@ -123,6 +123,11 @@
             <div class="col-md-12" style="padding-bottom: 5px;"><strong>@lang('admin/hardware/form.date'): </strong>
             {{{ $asset->purchase_date }}} </div>
         @endif
+		
+		@if ($asset->ship_date)
+            <div class="col-md-12" style="padding-bottom: 5px;"><strong>@lang('admin/hardware/form.ship_date'): </strong>
+            {{{ $asset->ship_date }}} </div>
+        @endif
 
         @if ($asset->purchase_cost)
             <div class="col-md-12" style="padding-bottom: 5px;"><strong>@lang('admin/hardware/form.cost'):</strong>
