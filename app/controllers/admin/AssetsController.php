@@ -277,7 +277,10 @@ class AssetsController extends AdminController
 		
         // Grab the dropdown list of status
         $statuslabel_list = Statuslabel::orderBy('name', 'asc')->lists('name', 'id');
-
+		
+		// Grab the downdown list of storage_solution
+		//$storage_solution_list = Statuslabel::orderBy('name', 'asc')->lists(name', 'id');
+		
         return View::make('backend/hardware/edit', compact('asset'))->with('model_list',$model_list)->/*with('storage_solution_list',$storage_solution_list)*/with('supplier_list',$supplier_list)->with('location_list',$location_list)->with('statuslabel_list',$statuslabel_list);
     }
 

@@ -152,11 +152,11 @@
         @endif
 
         @if ($asset->depreciation)
-            <div class="col-md-12" style="padding-bottom: 5px;"><strong>@lang('admin/hardware/form.depreciation'): </strong>
+          <!--  <div class="col-md-12" style="padding-bottom: 5px;"><strong>@lang('admin/hardware/form.depreciation'): </strong>
             {{ $asset->depreciation->name }}
                 ({{{ $asset->depreciation->months }}}
                 @lang('admin/hardware/form.months')
-                )</div>
+                )</div> -->
             <div class="col-md-12" style="padding-bottom: 5px;"><strong>@lang('admin/hardware/form.fully_depreciated'): </strong>
              @if ($asset->time_until_depreciated()->y > 0)
                 {{{ $asset->time_until_depreciated()->y }}}
@@ -171,7 +171,7 @@
 
         @if ($asset->model->eol)
             <div class="col-md-12" style="padding-bottom: 5px;">
-            <strong>@lang('admin/hardware/form.eol_rate'): </strong>
+			<strong>@lang('admin/hardware/form.eol_rate'): </strong>
             {{{ $asset->model->eol }}}
             @lang('admin/hardware/form.months') </div>
             <div class="col-md-12" style="padding-bottom: 5px;">

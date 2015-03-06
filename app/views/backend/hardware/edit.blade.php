@@ -197,7 +197,7 @@
                         {{ $errors->first('backup_solution', '<br><span class="alert-msg"><i class="fa fa-times"></i> :message</span>') }}
                     </div>
             </div>
-			
+						
 			<!-- Storage Solution -->
 			
 			<div class="form-group {{ $errors->has('storage_solution') ? ' has-error' : '' }}">
@@ -207,6 +207,7 @@
                         {{ $errors->first('storage_solution', '<br><span class="alert-msg"><i class="fa fa-times"></i> :message</span>') }}
                     </div>
             </div>
+			
 			
 			<!-- BC Ranking -->
             <div class="form-group {{ $errors->has('bcrank') ? ' has-error' : '' }}">
