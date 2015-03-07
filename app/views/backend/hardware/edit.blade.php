@@ -122,6 +122,15 @@
                 </div>
             </div>
 
+			<!-- Company -->
+            <div class="form-group {{ $errors->has('company_id') ? ' has-error' : '' }}">
+                <label for="company_id" class="col-md-2 control-label">@lang('admin/hardware/form.asset_company')</label>
+                <div class="col-md-7">
+				    {{ Form::select('company_id', $company_list , Input::old('company_id', $asset->company_id), array('class'=>'select2', 'style'=>'min-width:350px')) }}
+                    {{ $errors->first('company_id', '<br><span class="alert-msg"><i class="fa fa-times"></i> :message</span>') }}
+                </div>
+            </div>
+			
             <!-- Supplier -->
             <div class="form-group {{ $errors->has('supplier_id') ? ' has-error' : '' }}">
                 <label for="supplier_id" class="col-md-2 control-label">@lang('admin/hardware/form.supplier')</label>
