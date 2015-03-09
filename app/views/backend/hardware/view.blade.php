@@ -143,7 +143,7 @@
 		@if ($asset->company_id)
             <div class="col-md-12" style="padding-bottom: 5px;"><strong>@lang('admin/hardware/form.asset_company'): </strong>
             <a href="{{ route('view/company', $asset->company_id) }}">
-            {{{ $asset->company_id }}}
+            {{{ $asset->company->name }}}
             </a> </div>
         @endif
 				

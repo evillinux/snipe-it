@@ -15,6 +15,7 @@ class Asset extends Depreciable
         'notes'   			=> 'alpha_space',
         'pysical' 			=> 'integer',
         'supplier_id' 		=> 'integer',
+		'company_id'		=> 'integer',
         'asset_tag'   => 'required|alpha_space|min:3|max:255|unique:assets,asset_tag,{id}',
         //'serial'   			=> 'required|alpha_dash|min:3|max:255|unique:assets,serial,{id}',
         'status' 			=> 'integer'
@@ -165,6 +166,11 @@ class Asset extends Depreciable
         return $this->belongsTo('Supplier','supplier_id');
     }
 
+	public function company()
+	{
+		return $this->belongsTo('Company','company_id');
+	}
+	
     public function months_until_eol()
     {
             $today = date("Y-m-d");
