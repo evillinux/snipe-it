@@ -196,11 +196,6 @@
                                 <i class="fa fa-briefcase"></i> @lang('general.manufacturers')
                             </a>
                         </li>
-						<li{{ (Request::is('admin/settings/company') ? ' class="active"' : '') }}>
-                            <a href="{{ URL::to('admin/settings/company') }}">
-                                <i class="fa fa-building-o"></i> @lang('general.company')
-                            </a>
-                        </li>
                         <li{{ (Request::is('admin/settings/suppliers*') ? ' class="active"' : '') }}>
                             <a href="{{ URL::to('admin/settings/suppliers') }}">
                                 <i class="fa fa-credit-card"></i> @lang('general.suppliers')

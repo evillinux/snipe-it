@@ -158,18 +158,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'admin-auth', 'namespace' =>
             Route::post('{supplierId}/edit', 'SuppliersController@postEdit');
             Route::get('{supplierId}/delete', array('as' => 'delete/supplier', 'uses' => 'SuppliersController@getDelete'));
             Route::get('{supplierId}/view', array('as' => 'view/supplier', 'uses' => 'SuppliersController@getView'));
-        });       
-
-		# Company
-        Route::group(array('prefix' => 'company'), function () {
-            Route::get('/', array('as' => 'company', 'uses' => 'CompanyController@getIndex'));
-            Route::get('create', array('as' => 'create/company', 'uses' => 'CompanyController@getCreate'));
-            Route::post('create', 'CompanyController@postCreate');
-            Route::get('{companyId}/edit', array('as' => 'update/company', 'uses' => 'CompanyController@getEdit'));
-            Route::post('{companyId}/edit', 'CompanyController@postEdit');
-            Route::get('{companyId}/delete', array('as' => 'delete/company', 'uses' => 'CompanyController@getDelete'));
-            Route::get('{companyId}/view', array('as' => 'view/company', 'uses' => 'CompanyController@getView'));
-        }); 			
+        });        
         
          # Categories
         Route::group(array('prefix' => 'categories'), function () {          

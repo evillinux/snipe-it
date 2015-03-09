@@ -26,7 +26,6 @@ return array(
     'changepassword'  		=> 'Change Password',
     'checkin'  				=> 'Checkin',
     'checkout'  			=> 'Checkout',
-	'company'				=> 'Companies',
     'city'  				=> 'City',
     'country'  				=> 'Country',
     'create'				=> 'Create New',
