@@ -42,5 +42,6 @@ return array(
 	'backup_solution'	=> 'Backup System',
 	'storage_solution'	=> 'Storage System',
 	'ship_date'			=> 'Ship Date',
+	'asset_company'		=> 'Asset Owned By',
 )
 ;

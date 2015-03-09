@@ -139,9 +139,16 @@
             <div class="col-md-12" style="padding-bottom: 5px;"><strong>@lang('admin/hardware/form.order'):</strong>
             {{{ $asset->order_number }}} </div>
         @endif
-
+		
+		@if ($asset->company_id)
+            <div class="col-md-12" style="padding-bottom: 5px;"><strong>@lang('admin/hardware/form.asset_company'): </strong>
+            <a href="{{ route('view/company', $asset->company_id) }}">
+            {{{ $asset->company_id }}}
+            </a> </div>
+        @endif
+				
         @if ($asset->supplier_id)
-            <div class="col-md-6" style="padding-bottom: 5px;"><strong>@lang('admin/hardware/form.supplier'): </strong>
+            <div class="col-md-12" style="padding-bottom: 5px;"><strong>@lang('admin/hardware/form.supplier'): </strong>
             <a href="{{ route('view/supplier', $asset->supplier_id) }}">
             {{{ $asset->supplier->name }}}
             </a> </div>
@@ -153,7 +160,8 @@
             @lang('admin/hardware/form.months')
             </div>
             <div class="col-md-12 {{{ $asset->warrantee_expires() < date("Y-m-d H:i:s") ? 'ui-state-highlight' : '' }}}"  style="padding-bottom: 5px;"><strong>@lang('admin/hardware/form.expires'):</strong>
-            {{{ $asset->warrantee_expires() }}}</div>
+            {{{ $asset->warrantee_expires() }}}
+			</div>
         @endif
 
         @if ($asset->depreciation)

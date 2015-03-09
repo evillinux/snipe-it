@@ -5,6 +5,7 @@ use Input;
 use Lang;
 use Asset;
 use Supplier;
+use Company;
 use Statuslabel;
 use User;
 use Setting;
@@ -92,15 +93,10 @@ class AssetsController extends AdminController
         ->orderBy('modelno', 'asc')
         ->lists('name', 'id');
 		
-		/* Add Function later, requires adding route => Copy Manufacturers file...
-		// Grab the dropdown list of storage_solution
-		$storage_solution_list = array('' => 'Select a Storage Solution') + DB::table('storage_solution')
-		->select(DB::raw('concat(name," / ",model_name) as name, id'))->orderBy('name', 'asc')
-		->orderBy('model_name', 'asc')
-		->lists('name', 'id');
-		*/
 
         $supplier_list = array('' => '') + Supplier::orderBy('name', 'asc')->lists('name', 'id');
+		//Company dropdown menu list
+		$company_list = array('' => '') + Company::orderBy('name', 'asc')->lists('name', 'id');
         $assigned_to = array('' => 'Select a User') + DB::table('users')->select(DB::raw('concat (first_name," ",last_name) as full_name, id'))->whereNull('deleted_at')->lists('full_name', 'id');
         $location_list = array('' => '') + Location::orderBy('name', 'asc')->lists('name', 'id');
 
@@ -110,8 +106,8 @@ class AssetsController extends AdminController
 
         $view = View::make('backend/hardware/edit');
         $view->with('supplier_list',$supplier_list);
+		$view->with('company_list',$company_list);
         $view->with('model_list',$model_list);
-		//$view->with('storage_solution_list',$storage_solution_list);
         $view->with('statuslabel_list',$statuslabel_list);
         $view->with('assigned_to',$assigned_to);
         $view->with('location_list',$location_list);
@@ -186,6 +182,12 @@ class AssetsController extends AdminController
                 $asset->supplier_id =  0;
             } else {
                 $asset->supplier_id        = e(Input::get('supplier_id'));
+            }
+			
+			if (e(Input::get('company_id')) == '') {
+                $asset->company_id =  0;
+            } else {
+                $asset->company_id        = e(Input::get('company_id'));
             }
 
             if (e(Input::get('requestable')) == '') {
@@ -271,16 +273,9 @@ class AssetsController extends AdminController
 		->select(DB::raw('concat(name," / ",modelno) as name, id'))->orderBy('name', 'asc')
 		->orderBy('modelno', 'asc')
 		->lists('name', 'id');
+		$company_list = array('' => '') + Company::orderBy('name', 'asc')->lists('name', 'id');
         $supplier_list = array('' => '') + Supplier::orderBy('name', 'asc')->lists('name', 'id');
         $location_list = array('' => '') + Location::orderBy('name', 'asc')->lists('name', 'id');
-
-		/* Add Function later, requires adding route => Copy Manufacturers file...
-		// Grab the dropdown list of storage_solution
-		$storage_solution_list = array('' => '') + DB::table('storage_solution')
-		->select(DB::raw('concat(name," / ",model_name) as name, id'))->orderBy('name', 'asc')
-		->orderBy('model_name', 'asc')
-		->lists('name', 'id');
-		*/
 		
         // Grab the dropdown list of status
         $statuslabel_list = Statuslabel::orderBy('name', 'asc')->lists('name', 'id');
@@ -288,7 +283,7 @@ class AssetsController extends AdminController
 		// Grab the downdown list of storage_solution
 		//$storage_solution_list = Statuslabel::orderBy('name', 'asc')->lists(name', 'id');
 		
-        return View::make('backend/hardware/edit', compact('asset'))->with('model_list',$model_list)->/*with('storage_solution_list',$storage_solution_list)*/with('supplier_list',$supplier_list)->with('location_list',$location_list)->with('statuslabel_list',$statuslabel_list);
+        return View::make('backend/hardware/edit', compact('asset'))->with('model_list',$model_list)->with('supplier_list',$supplier_list)->with('company_list',$company_list)->with('location_list',$location_list)->with('statuslabel_list',$statuslabel_list);
     }
 
 
@@ -352,6 +347,12 @@ class AssetsController extends AdminController
                 $asset->supplier_id =  NULL;
             } else {
                 $asset->supplier_id        = e(Input::get('supplier_id'));
+            }
+			
+			if (e(Input::get('company_id')) == '') {
+                $asset->company_id =  0;
+            } else {
+                $asset->company_id        = e(Input::get('company_id'));
             }
 
             if (e(Input::get('requestable')) == '') {
@@ -676,12 +677,13 @@ class AssetsController extends AdminController
         // get depreciation list
         $depreciation_list = array('' => '') + Depreciation::lists('name', 'id');
         $supplier_list = array('' => '') + Supplier::orderBy('name', 'asc')->lists('name', 'id');
+		$company_list = array('' => '') + Company::orderBy('name', 'asc')->lists('name', 'id');
         $assigned_to = array('' => 'Select a User') + DB::table('users')->select(DB::raw('concat (first_name," ",last_name) as full_name, id'))->whereNull('deleted_at')->lists('full_name', 'id');
 
         $asset = clone $asset_to_clone;
         $asset->id = null;
         $asset->asset_tag = '';
-        return View::make('backend/hardware/edit')->with('supplier_list',$supplier_list)->with('model_list',$model_list)->with('statuslabel_list',$statuslabel_list)->with('assigned_to',$assigned_to)->with('asset',$asset)->with('location_list',$location_list);
+        return View::make('backend/hardware/edit')->with('supplier_list',$supplier_list)->with('company_list',$company_list)->with('model_list',$model_list)->with('statuslabel_list',$statuslabel_list)->with('assigned_to',$assigned_to)->with('asset',$asset)->with('location_list',$location_list);
 
     }
 
@@ -856,11 +858,12 @@ class AssetsController extends AdminController
 			$assets = Input::get('edit_asset');
 			
 			$supplier_list = array('' => '') + Supplier::orderBy('name', 'asc')->lists('name', 'id');
+			$company_list = array('' => '') + Company::orderBy('name', 'asc')->lists('name', 'id');
 	        $statuslabel_list = array('' => '') + Statuslabel::lists('name', 'id');
 	        $location_list = array('' => '') + Location::lists('name', 'id');
 		}
 
-		return View::make('backend/hardware/bulk')->with('assets',$assets)->with('supplier_list',$supplier_list)->with('statuslabel_list',$statuslabel_list)->with('location_list',$location_list);
+		return View::make('backend/hardware/bulk')->with('assets',$assets)->with('supplier_list',$supplier_list)->with('company_list',$company_list)->with('statuslabel_list',$statuslabel_list)->with('location_list',$location_list);
 			 
     }
     
