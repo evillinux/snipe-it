@@ -17,14 +17,5 @@ class Company extends Elegant
     {
         return $this->hasMany('Asset', 'company_id')->count();
     }
-
-    public function licenses()
-    {
-        return $this->hasMany('License', 'company_id');
-    }
-
-    public function num_licenses()
-    {
-        return $this->hasMany('License', 'company_id')->count();
-    }
+	
 }

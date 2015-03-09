@@ -3,7 +3,7 @@
 {{-- Page title --}}
 @section('title')
 @lang('admin/company/table.view') -
-{{{ $companies->name }}} ::
+{{{ $company->name }}} ::
 @parent
 @stop
 
@@ -16,7 +16,7 @@
         @lang('admin/company/table.update')</a>
         <h3 class="name">
         @lang('admin/company/table.view_assets_for')
-        {{{ $companies->name }}} </h3>
+        {{{ $company->name }}} </h3>
     </div>
 </div>
 

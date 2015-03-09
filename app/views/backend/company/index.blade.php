@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-@lang('admin/company/table.companies') ::
+@lang('admin/company/table.companies')
 @parent
 @stop
 

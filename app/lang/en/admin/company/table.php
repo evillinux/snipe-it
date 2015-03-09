@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'name'                  => 'Supplier Name',
+    'name'                  => 'Company Name',
 	'companies'				=> 'Companies',
 	'view_assets_for'		=> 'Assets for',
 	'update'				=> 'Edit',
