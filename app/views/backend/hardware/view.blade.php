@@ -61,7 +61,7 @@
 
         @if ($asset->serial)
             <div class="col-md-12" style="padding-bottom: 5px;"><strong>@lang('admin/hardware/form.serial'): </strong>
-            <em><a href="http://www.dell.com/support/home/us/en/19/product-support/servicetag/{{{ $asset->serial }}}/" target="_blank">{{{ $asset->serial }}}</a></em></div>
+            <em><a href="http://www.dell.com/support/home/us/en/04/product-support/servicetag/{{{ $asset->serial }}}/" target="_blank">{{{ $asset->serial }}}</a></em></div>
 
         @endif
 
@@ -363,7 +363,14 @@
 </div>
         <!-- side address column -->
         <div class="col-md-3 col-xs-12 address pull-right">
+		<h6>Dell Warranty Info</h6>
+		<div class="break-word">
+		@if($asset->serial)
+			<iframe src="http://10.100.2.61/dellasset.php?tag={{{ $asset->serial }}}" frameborder="0" allowtransparency="true" height="310"></iframe>
+		@endif
+</div>
 
+		
         	<!-- Asset notes -->
 @if ($asset->notes)
 
