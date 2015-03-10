@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCategoryType extends Migration {
+class AddCompaniesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,13 @@ class AddCategoryType extends Migration {
 	 */
 	public function up()
 	{
-		//
-		Schema::table('categories', function ($table) {
-			$table->string('category_type')->nullable()->default('asset');
-		});
+		//Adds company table
+		Schema::create('companies', function ($table) {
+            $table->increments('id');
+            $table->string('name');      
+            $table->timestamps();
+            $table->softDeletes();
+        });
 	}
 
 	/**
@@ -26,9 +29,6 @@ class AddCategoryType extends Migration {
 	public function down()
 	{
 		//
-		Schema::table('categories', function ($table) {
-			$table->dropColumn('category_type');
-		});
 	}
 
 }
